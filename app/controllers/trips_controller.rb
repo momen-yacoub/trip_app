@@ -43,7 +43,7 @@ class TripsController < ApplicationController
   end
   # POST /trips/1/update_location
   def update_location
-    UpdateTripLocationJob.perform(@trip.id, place_params)
+    UpdateTripLocationJob.perform_async(@trip.id, place_params)
     render nothing: true , status: :ok
   end
 

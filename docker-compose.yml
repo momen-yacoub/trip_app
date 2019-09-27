@@ -29,3 +29,4 @@ services:
       DB_USER: root
       DB_PASSWORD: root
       DB_HOST: db
+      DB_NAME_TEST: trip_app_test_db

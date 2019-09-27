@@ -3,6 +3,7 @@ class CreateDrivers < ActiveRecord::Migration[5.0]
     create_table :drivers do |t|
       t.string :name
       t.string :city
+      t.string :phone_number
       t.boolean :available, default: true
       t.datetime :deleted_at
       t.timestamps
