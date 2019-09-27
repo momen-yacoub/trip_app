@@ -10,6 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20190927140752) do
+
+  create_table "drivers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name"
+    t.string   "city"
+    t.boolean  "available"
+    t.float    "rate",       limit: 24
+    t.datetime "deleted_at"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["city"], name: "index_drivers_on_city", using: :btree
+    t.index ["name"], name: "index_drivers_on_name", using: :btree
+  end
+
+  create_table "places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name"
+    t.string   "city"
+    t.float    "longitude",  limit: 24
+    t.float    "latitude",   limit: 24
+    t.datetime "deleted_at"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["city"], name: "index_places_on_city", using: :btree
+    t.index ["name"], name: "index_places_on_name", using: :btree
+  end
 
 end

@@ -2,3 +2,10 @@ docker run -it --rm --user "$(id -u):$(id -g)" -v "$PWD":/usr/src/trip_app -w /u
 
 
 docker-compose run trip_app rails new . --force --database=mysql --skip-bundle --api
+
+
+docker-compose run trip_app rails g model Driver name:string:index city:string:index deleted_at:datetime available:boolean rate:float
+docker-compose run trip_app rails g model Place name:string:index city:string:index  longitude:float latitude:float deleted_at:datetime
+
+
+docker-compose run trip_app rails g scaffold Trip name:string:index city:string:index driver_id:integer status:integer source_id:integer destination_id:integer seats:integer price:float deleted_at:datetime
