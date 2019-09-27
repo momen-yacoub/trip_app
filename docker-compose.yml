@@ -1,0 +1,31 @@
+version: '2'
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: trip_app_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+  redis:
+    image: redis
+  trip_app:
+    build: .
+    command: sh ./start.sh
+    volumes:
+      - .:/trip_app/:rw
+    restart: always
+    ports:
+      - "3001:3000"
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      DB_NAME: trip_app_db
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_HOST: db

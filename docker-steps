@@ -1,0 +1,4 @@
+docker run -it --rm --user "$(id -u):$(id -g)" -v "$PWD":/usr/src/trip_app -w /usr/src/trip_app rails rails new --skip-bundle --api --database mysql trip_app
+
+
+docker-compose run trip_app rails new . --force --database=mysql --skip-bundle --api
